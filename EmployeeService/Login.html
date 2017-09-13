@@ -49,11 +49,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <input type="button" id="btnGoogleLogin" value="Login with Google" class="btn btn-success" />
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        <input type="button" id="btnGoogleLogin" value="Login with Google" class="btn btn-success" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" id="btnFacebookLogin" value="Login with Facebook" class="btn btn-success" />
+                    </td>
+                </tr>
                 </tbody>
             </table>
 
@@ -73,6 +78,9 @@
             getAccessToken();
             $('#btnGoogleLogin').click(function () {
                 window.location.href = "/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A27036%2FLogin.html&state=7JvWS40ue1PvvZhlP03G8hkUNcv3wIKHN9tQSH9V18k1";
+            });
+            $('#btnFacebookLogin').click(function () {
+                window.location.href = "/api/Account/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A27036%2FLogin.html&state=7JvWS40ue1PvvZhlP03G8hkUNcv3wIKHN9tQSH9V18k1";
             });
             //Close the bootstrap alert
             $('#linkClose').click(function () {

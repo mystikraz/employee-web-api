@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EmployeeService.Facebook;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
@@ -10,6 +11,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using EmployeeService.Providers;
 using EmployeeService.Models;
+using Microsoft.Owin.Security.Facebook;
 
 namespace EmployeeService
 {
@@ -56,9 +58,18 @@ namespace EmployeeService
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+//            app.UseFacebookAuthentication(
+//                appId: "",
+//                appSecret: "");
+            var facebookOptions = new FacebookAuthenticationOptions()
+                {
+                    AppId = "131817377443654",
+                    AppSecret = "5137b986053fe009c6938e5bb3f3011c",
+                    BackchannelHttpHandler = new FaceboookBackChannelHandler(),
+                    UserInformationEndpoint = "https://graph.facebook.com/v2.4/me?fields=id,email"
+                };
+            facebookOptions.Scope.Add("email");
+            app.UseFacebookAuthentication(facebookOptions);
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
